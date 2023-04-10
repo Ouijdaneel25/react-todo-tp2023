@@ -9,7 +9,8 @@ const RouteApp = () => {
       <Route path="*" element={<Navigate replace to="/todo" />} />
       <Route path="/about" element={<About />} />
       <Route path="/todo" element={<Todo />} />
-      <Route path="/detail/:id/:n/:c" element={<Detail />} />
+      {/* <Route path="/detail/:id/:n/:c" element={<Detail />} /> */}
+      <Route path="/detail/:id" element={<Detail />} />
     </Routes>
   );
 };

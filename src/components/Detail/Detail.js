@@ -1,31 +1,64 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
+import ContextTodo from "../../components/contexte/ContextTodo";
 
 function Detail() {
   const { id } = useParams();
-  const { n } = useParams();
-  const { c } = useParams();
+  const { findTodoById } = useContext(ContextTodo);
 
-  console.log(id);
-  console.log(n);
-  console.log(c);
+  const todo = findTodoById(id);
 
   return (
     <>
-  <center>
-    <div>
-      <br />
-      <br />
-        <h1 style={{ color: "white" }}>Detail</h1>
-        <br />
-      <br />
-        <h4 style={{ color: "white" }}>ID :   {id}</h4>
-        <h4 style={{ color: "white" }}>Todo :   {n}</h4>
-        <h4 style={{ color: "white" }}>Completed :   {c}</h4>
-      </div>
-  </center>
-    
+      <center>
+        <h1 style={{ color: "white",marginLeft: "-9%" }}>Detail</h1>
+        <br/>
+        <br/>
+        <table>
+          <tr>
+            <td>
+              <h4 style={{ color: "white" }}>ID  :</h4>
+            </td>
+            <td>
+              <h4 style={{ color: "white" }}>{id}</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 style={{ color: "white" }}>Todo  :</h4>
+            </td>
+            <td>
+              <h4 style={{ color: "white" }}>{todo.todo}</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 style={{ color: "white" }}>Priorite  :</h4>
+            </td>
+            <td>
+           
+              <h4 style={{ color: "white" }}> { todo.priority===1 ? "lOW" : todo.priority===2 ? "MEDUIM" :"HIGH"}</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 style={{ color: "white" }}>Create Todo  :</h4>
+            </td>
+            <td>
+              <h4 style={{ color: "white" }}>{todo.createTodo}</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4 style={{ color: "white" }}>Update Todo  :</h4>
+            </td>
+            <td>
+              <h4 style={{ color: "white" }}>{todo.updateTodo}</h4>
+            </td>
+          </tr>
+        </table>
+      </center>
     </>
-      
   );
 }
 

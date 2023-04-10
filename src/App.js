@@ -21,27 +21,43 @@ function App() {
       id: generateId(),
       todo: "Read books",
       complete: false,
+      priority: 1,
+      createTodo: "",
+      updateTodo: "",
     },
     {
       id: generateId(),
       todo: "Journaling",
       complete: false,
+      priority: 3,
+      createTodo: "",
+      updateTodo: "",
     },
     {
       id: generateId(),
       todo: "Make Dinner",
       complete: false,
+      priority: 2,
+      createTodo: "",
+      updateTodo: "",
     },
     {
       id: generateId(),
       todo: "Push-ups",
       complete: false,
+      priority: 1,
+      createTodo: "",
+      updateTodo: "",
     },
   ]);
+
+  const findTodoById = (id) => {
+    return todoItems.find((todo) => todo.id === parseInt(id));
+  };
   return (
     <BrowserRouter>
       <div className="container">
-        <ContextTodo.Provider value={{todoItems,settodoItems}}>
+        <ContextTodo.Provider value={{ todoItems, settodoItems, findTodoById }}>
           {loginIn ? (
             <>
               <FloatingButton logout={logout} />

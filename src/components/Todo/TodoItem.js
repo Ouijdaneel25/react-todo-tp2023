@@ -6,6 +6,7 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 function TodoItem(props) {
   return (
@@ -18,18 +19,36 @@ function TodoItem(props) {
           className={`list-group-item d-flex justify-content-between align-items-center`}
         >
           <Link
-            to={`/detail/${props.item.id}/${props.item.todo}/${props.item.complete}`}
-            style={{ textDecoration: "none",color:"white" }}
+            to={`/detail/${props.item.id}`}
+            style={{ textDecoration: "none", color: "white" }}
           >
             <span>{props.item.todo}</span>
           </Link>
           <div>
+            {props.item.priority === 1 && (
+              <FontAwesomeIcon
+                icon={faCircle}
+                style={{ color: "yellow", marginRight: "10px" }}
+              />
+            )}
+            {props.item.priority === 2 && (
+              <FontAwesomeIcon
+                icon={faCircle}
+                style={{ color: "orange", marginRight: "10px" }}
+              />
+            )}
+            {props.item.priority === 3 && (
+              <FontAwesomeIcon
+                icon={faCircle}
+                style={{ color: "green", marginRight: "10px" }}
+              />
+            )}
             <FontAwesomeIcon
               onClick={() => props.checkTodoItem(props.item.id)}
               style={{
                 marginRight: "0.3em",
               }}
-              icon={props.item.complete ? faBan : faCheck}
+              icon={props.item.complete ? faCheck : faBan}
               className="pointer"
             />
             <FontAwesomeIcon
